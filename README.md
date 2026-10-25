@@ -18,7 +18,7 @@
 
 ## 📌 Overview
 
-Network flow & connection session analyzer — ss/netstat/proc, anomalies, baseline diff
+OFlow — Network Flow / Connection Session Analyzer. It provides ingest from /proc/net/{tcp,tcp6,udp,udp6,raw}, `ss -antup`, `netstat -antup` or a saved text dump (format auto-detected: ss / netstat / proc table). Operators can export results (including machine-readable formats) and gate CI with severity thresholds where supported.
 
 ---
 
@@ -30,10 +30,6 @@ Network flow & connection session analyzer — ss/netstat/proc, anomalies, basel
 - Offline Geo/ASN stub — private / public / loopback / link-local / CGNAT / multicast / bogon classes, well-known service map, optional local JSON enrichment file (CIDR → label / ASN / country)
 - Anomaly heuristics — fan-in / fan-out to one remote, rare high-port listeners, wildcard listeners, long- lived odd sessions, reverse-shell heuristics, spike-vs-baseline, half-open SYN floods
 - Baseline snapshots + diff (new listeners, new remotes, new processes, vanished services)
-- PCAP-lite — summarise `tcpdump -nn` text or run `tcpdump -nn -r file.pcap` (graceful if missing)
-- Process ↔ socket map via /proc/<pid>/fd inodes
-- Export TXT / CSV / JSON with location chooser, clipboard copy, live watch mode
-- Full CLI (--ss, --file, --watch, --json, --baseline, --diff, --pcap, --anomalies, --version ...)
 
 ---
 
@@ -47,7 +43,9 @@ Network flow & connection session analyzer — ss/netstat/proc, anomalies, basel
 ## 🚀 Usage
 
 ```bash
-./OFlow
+./OFlow                                     # interactive menu
+./OFlow --file sample.txt
+./OFlow --help
 ```
 
 ---
